@@ -1,34 +1,44 @@
-import config from './config.js'
-import request from './fetch'
+import apiPath from './apiPath';
+import request from './fetch';
 
-const  API = {
-  // 1.加载推荐
-  loadRecomond(data) {
-    console.log("recommond===",data,config.host +  config.recomond);
-    return request({
-      url:config.host +  config.recomond,
-      method:'GET',
-      dataType:'json',
-      data,
-      header: {
-        'device_id': 'baidu',
-        'os_platform': 'baidu-mini-program'
-      },
-    })
-  }, 
-  // 2.作品详情
-  loadDetail(data) {
-    return request({
-      url:config.host +  config.loadRecomond,
-      method:'GET',
-      dataType:'json',
-      data,
-      header: {
-        'device_id': 'baidu',
-        'os_platform': 'baidu-mini-program'
-      },
-    })
+const GET = 'GET';
+const POST = 'POST';
+
+const API = {
+  login(parameter) {
+    return request(apiPath.login, POST, parameter);
   },
-}
+  create(parameter) {
+    return request(apiPath.topic.createTopic, POST, parameter);
+  },
 
-export default API
+  list(parameter) {
+    return request(apiPath.topic.list, GET, parameter);
+  },
+
+  getTopic(parameter) {
+    return request(apiPath.topic.topic, GET, parameter);
+  },
+
+  like(parameter) {
+    return request(apiPath.topic.like, POST, parameter);
+  },
+  deleteTopic(parameter) {
+    return request(apiPath.topic.remove, POST, parameter);
+  },
+  getUserInfo(parameter) {
+    return request(apiPath.user.userInfo, GET, parameter);
+  },
+
+  createComment(parameter) {
+    return request(apiPath.comment.createComment, POST, parameter);
+  },
+  getCommentList(parameter) {
+    return request(apiPath.comment.commentList, GET, parameter);
+  },
+  getHotest(paramter) {
+    return request(apiPath.topic.hotest, paramter);
+  }
+};
+
+export default API;

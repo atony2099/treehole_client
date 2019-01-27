@@ -1,23 +1,54 @@
 /*
- * @Author: atony2099 
- * @Date: 2018-11-29 18:50:54 
+ * @Author: atony2099
+ * @Date: 2018-11-29 18:50:54
  * @Last Modified by: atony2099
- * @Last Modified time: 2018-11-30 15:28:02
+ * @Last Modified time: 2019-01-28 00:07:06
  */
 
+import Taro from '@tarojs/taro';
+import Storage from '../util/storage';
+import apiList from './apiPath';
 
-import Taro from '@tarojs/taro'
+export default async function(url, method = 'GET', parameter = {}) {
+  url = apiList.host + url;
 
-export default function request(opt) {
-  return Taro.request(opt).then((res) => {
-    console.log(res,"load=====taro")
-    let {statusCode, data} = res;
+  let opt = {
+    url,
+    method,
+    data: parameter,
+    dataType: 'json'
+  };
+
+  let header = {
+    WX_HEADER_FLAG: 'true'
+  };
+
+  let skey;
+  try {
+    skey = await Storage.getSkey();
+  } catch (e) {}
+
+  if (skey) {
+    header.WX_HEADER_SKEY = skey;
+  }
+  opt.header = header;
+
+  return Taro.request(opt).then(res => {
+    let { statusCode, data } = res;
     if (statusCode >= 200 && statusCode < 300) {
-      return data;
-    } else {
-      throw new Error(`网络请求错误，状态码${statusCode}`);
+      if (data.data && data.error_code === 0) {
+        return data.data;
+      } else if (data.error_msg) {
+        let error = new Error();
+        error.code = data.error_code;
+        error.message = data.error_msg;
+        throw error;
+      } else {
+        let error = new Error();
+        error.code = statusCode;
+        error.message = '网络错误';
+        throw error;
+      }
     }
-  }).catch(error => {
-    console.log(error,"request====");
-  })
+  });
 }

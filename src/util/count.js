@@ -1,19 +1,17 @@
 /*
- * @Author: atony2099 
- * @Date: 2018-11-30 12:37:20 
+ * @Author: atony2099
+ * @Date: 2018-11-30 12:37:20
  * @Last Modified by: atony2099
- * @Last Modified time: 2018-11-30 12:37:45
+ * @Last Modified time: 2019-01-18 22:35:40
  */
-
-
 
 const Count = count => {
   if (!count) {
-    return '0'
+    return '0';
   }
   if (count < 1000) {
-    return count.toString()
+    return count.toString();
   }
-  return (count / 1000).toFixed(1) + 'k'
-}
-export default Count
+  return (count / 1000).toFixed(1) + 'k';
+};
+export default Count;
