@@ -23,7 +23,6 @@ export default class ListCell extends Taro.Component {
         like_count,
         reply_count,
         is_like,
-
         author: { nickName, avatar_url }
       },
       canDelete,

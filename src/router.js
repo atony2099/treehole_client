@@ -2,7 +2,7 @@
  * @Author: atony2099
  * @Date: 2019-01-18 19:22:34
  * @Last Modified by: atony2099
- * @Last Modified time: 2019-01-28 00:08:10
+ * @Last Modified time: 2019-01-28 02:14:44
  */
 import Taro from '@tarojs/taro';
 import storage from './util/storage';
