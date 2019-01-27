@@ -2,7 +2,7 @@
  * @Author: atony2099
  * @Date: 2019-01-17 01:24:47
  * @Last Modified by: atony2099
- * @Last Modified time: 2019-01-27 22:46:56
+ * @Last Modified time: 2019-01-28 02:04:48
  */
 
 import { View, Image } from '@tarojs/components';
@@ -34,7 +34,7 @@ export default class Person extends Taro.Component {
 
   async checkLogin() {
     let skey = await storage.getSkey();
-    if (!skey) {
+    if (skey) {
       this.getUserInfo(skey);
     }
     this.setState({ isLogin: !!skey });

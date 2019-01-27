@@ -2,14 +2,14 @@
  * @Author: atony2099
  * @Date: 2018-12-13 10:56:02
  * @Last Modified by: atony2099
- * @Last Modified time: 2019-01-28 00:10:05
+ * @Last Modified time: 2019-01-28 02:07:03
  */
 
 import Taro from '@tarojs/taro';
 
 const SKEY = 'SKEY';
 
-const TOKEN = '';
+let TOKEN = '';
 
 const Storage = {
   async getSkey() {
@@ -21,7 +21,7 @@ const Storage = {
 
   async get(key) {
     if (TOKEN) {
-      return;
+      return TOKEN;
     }
     let data;
     try {

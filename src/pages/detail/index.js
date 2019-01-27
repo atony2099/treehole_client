@@ -2,7 +2,7 @@
  * @Author: atony2099
  * @Date: 2019-01-18 20:45:49
  * @Last Modified by: atony2099
- * @Last Modified time: 2019-01-27 21:21:27
+ * @Last Modified time: 2019-01-28 02:09:59
  */
 
 import { View } from '@tarojs/components';
@@ -18,9 +18,6 @@ const mapStateToProps = ({ detail }) => ({
 
 @connect(mapStateToProps)
 export default class Detail extends Taro.Component {
-  config = {
-    navigationBarTitleText: 'IT吐槽'
-  };
   state = { value: '' };
 
   componentDidMount() {
