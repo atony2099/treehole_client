@@ -2,7 +2,7 @@
  * @Author: atony2099
  * @Date: 2018-11-29 18:50:54
  * @Last Modified by: atony2099
- * @Last Modified time: 2019-01-28 00:07:06
+ * @Last Modified time: 2019-02-12 13:13:47
  */
 
 import Taro from '@tarojs/taro';
@@ -20,7 +20,8 @@ export default async function(url, method = 'GET', parameter = {}) {
   };
 
   let header = {
-    WX_HEADER_FLAG: 'true'
+    ['WX-HEADER-FLAG']: 'true',
+    ['WX-HEADER-SKEY']: ''
   };
 
   let skey;
@@ -29,7 +30,7 @@ export default async function(url, method = 'GET', parameter = {}) {
   } catch (e) {}
 
   if (skey) {
-    header.WX_HEADER_SKEY = skey;
+    header['WX-HEADER-SKEY'] = skey;
   }
   opt.header = header;
 

@@ -15,7 +15,11 @@ var config = {
     babel: {
       sourceMap: true,
       presets: ['env'],
-      plugins: ['transform-decorators-legacy', 'transform-class-properties', 'transform-object-rest-spread']
+      plugins: [
+        'transform-decorators-legacy',
+        'transform-class-properties',
+        'transform-object-rest-spread'
+      ]
     }
   },
   defineConstants: {},
@@ -58,9 +62,9 @@ var config = {
   }
 };
 
-module.exports = function (merge) {
+module.exports = function(merge) {
   {
-    return merge({}, config, require("./dev.js"));
+    return merge({}, config, require('./dev.js'));
   }
-  return merge({}, config, require("./prod.js"));
+  return merge({}, config, require('./prod.js'));
 };

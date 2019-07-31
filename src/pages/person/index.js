@@ -2,7 +2,7 @@
  * @Author: atony2099
  * @Date: 2019-01-17 01:24:47
  * @Last Modified by: atony2099
- * @Last Modified time: 2019-01-28 02:04:48
+ * @Last Modified time: 2019-02-12 06:49:05
  */
 
 import { View, Image } from '@tarojs/components';
@@ -46,6 +46,7 @@ export default class Person extends Taro.Component {
   }
 
   pushLogin() {
+    console.log('go----');
     toLogin();
   }
   render() {
